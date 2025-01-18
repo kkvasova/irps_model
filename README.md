@@ -69,59 +69,6 @@ Z = Z_2(g)~~~~([\alpha/H]>[\alpha/H]_s)
 ```
 where the first function (&alpha;-elements distribution function (ADF) among the observed stars in the small galaxy) takes into account gas which must be found from the equations below. There are two equations _Z=Z(g)_, before and after [&alpha;/H]<sub>s</sub> (the ram pressure stripping occured). 
 
-### What it contains?
-
-After you upload the Jupyter Notebook, in your access will be functions with next arguments:
-
-| Function         | Input                                                                                        | Output                                                       |
-|------------------|----------------------------------------------------------------------------------------------|--------------------------------------------------------------|
-| eq_before_g      | F - inflow in &xi;                                                                           |    Returns &alpha;-abundances as                             |
-|                  | z<sub>inflow</sub> =  Z<sub>F</sub>/p<sub>eff</sub>                                          | the function of input array                                  |
-|                  | z<sub>initial</sub> = Z<sub>0</sub>/p<sub>eff</sub> - initial gas cloud &alpha;-abundance    | from the function Z = Z<sub>1</sub>(g)                       |
-|                  | g - gas, an array                                                                            |  (before ram pressure stripping).                            |
-|                  | g<sub>in</sub> - initial fraction of gas mass from the stellar system, in initial mass units it's 1 |                                                              |
-| g_rps            | F - inflow in &xi;                                                                           |  Returns the value of gas                                    |
-|                  | z<sub>inflow</sub> =  Z<sub>F</sub>/p<sub>eff</sub>                                          | when [&alpha;/H]=[&alpha;/H]<sub>stripped</sub>              |
-|                  | z<sub>initial</sub> = Z<sub>0</sub>/p<sub>eff</sub>                                          |                                                              |
-|                  | z<sub>str</sub> = Z<sub>stripped</sub>/p<sub>eff</sub>                                       |                                                              |
-| long_coef        | F - inflow in &xi;                                                                           | The equation   Z = Z<sub>2</sub>(g)                          |
-|                  | Es - outflow in &zeta;                                                                       | contains a long constant for                                 |
-|                  | z<sub>inflow</sub> =  Z<sub>F</sub>/p<sub>eff</sub>                                          | all values of gas                                            |
-|                  | z<sub>initial</sub> = Z<sub>0</sub>/p<sub>eff</sub>                                          | (&alpha;-abundances) term,                                   |
-|                  | g<sub>in</sub> - initial fraction of gas mass from the stellar system, in initial mass units it's 1    | which we placed outside                                      |
-| eq_after_g_abs   | F - inflow in &xi;                                                                           |    Returns &alpha;-abundances as                             |
-|                  | Es - outflow in &zeta;                                                                       | the function of an input array                               |
-|                  | z<sub>inflow</sub> =  Z<sub>F</sub>/p<sub>eff</sub>                                          | from the function Z = Z<sub>2</sub>(g)                       |
-|                  | z<sub>initial</sub> = Z<sub>0</sub>/p<sub>eff</sub>                                          |   (after ram pressure stripping).                            |
-|                  | long_coef - the supplemental long constant value,                                            |                                                              |
-|                  | measured in the external function                                                            |                                                              |
-|                  | g - gas, an array                                                                            |                                                              |
-|                  | g<sub>in</sub> - initial fraction of gas mass from the stellar system, in initial mass units it's 1    |                                                              |
-| eq_after_g_equal | F - inflow in &xi;                                                                           | Similar to _eq_after_g_abs_                                  |
-|                  | z<sub>inflow</sub> =  Z<sub>F</sub>/p<sub>eff</sub>                                          | but in the case &xi;=&zeta;                                  |
-|                  | z<sub>initial</sub> = Z<sub>0</sub>/p<sub>eff</sub>                                          |                                                              |
-|                  | g - gas, an array                                                                            |                                                              |
-|                  | g_in - initial fraction of gas mass from the stellar system, in initial mass units it's 1    |                                                              |
-| gas_equation     | p<sub>eff</sub> - the effective yield,                                                       | Combines _eq_after_g_abs_                                    |
-|                  | F - inflow in &xi;                                                                           | and _eq_before_g_abs_                                        |
-|                  | Es - outflow in &zeta;                                                                       | and returns gas values                                       |
-|                  |  aH<sub>inflow</sub> = [&alpha;/H]<sub>F</sub>                                               | for designated array of                                      |
-|                  |  aH<sub>initial</sub> = [&alpha;/H]<sub>0</sub>                                              | [&alpha;/H] values                                           |
-|                  |  aH<sub>str</sub> = [&alpha;/H]<sub>s</sub>,                                                 |                                                              |
-|                  | points = 5001, (amount of points in the array of                                             |                                                              |
-|                  | ds/dZ~ds/d[&alpha;/H]))                                                                      |                                                              |
-|                  | show=True - whether to show or not to show the g([&alpha;/H]) figure                         |                                                              |
-| a2               | p - the effective yield,                                                                     |                                                              |
-|                  | aH<sub>f</sub> = [&alpha;/H]<sub>F</sub>,                                                    | Returns ds/d[&alpha;/H] values                               |
-|                  | F - inflow in &xi;                                                                           | for specified parameters:                                    |
-|                  | E - outflow in &zeta;                                                                        | p<sub>eff</sub>, &zeta;/&xi;                                 |
-|                  | alphah - array of equally spaced [&alpha;/H] points,                                         | (with &xi; fixed as                                          |
-|                  | gas - gas, an array of points predetermined for [&alpha;/H] array in aH array,               | 10 before and 0.01 after intense gas loss has started)                    |
-|                  | aH<sub>str</sub>=[&alpha;/H]<sub>s</sub>                                                     |    [&alpha;/H]<sub>F</sub>                                   |
-|                  | show=False - whether to show or not to show supplemental g([&alpha;/H]) and other plots      |  and the array of [&alpha;/H]                                    |
-|                                                                                                                                                                                |
-
-The function _a2_ takes as input three model parameters only, because the structure of the equations allows to consider &xi; as a normalization factor. The gas values for each &alpha;-abundance array is predetermined in function _gas_equation_, which combines equations before ram pressure stripping occurs and after. 
 
 ### How to use it?
 
