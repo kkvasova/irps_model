@@ -8,7 +8,7 @@ authors:
     given-names: Evan
     orcid: https://orcid.org/0000-0001-6196-5162
 title: "Inflow with Ram Pressure Stripping"
-version: v1.4
+version: v1.7.2
 identifiers:
   - type: doi
     value: 
