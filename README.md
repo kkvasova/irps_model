@@ -1,7 +1,7 @@
-### Welcome to analytical galactic chemical evolution model with terminal wind sampler!
-How are Mg, Si, Ca, Ti, or so-called __&alpha;-elements__, evolved in dwarf galaxies? In this repository you find the answer from simple implementation of what is called one-zone Galactic Chemical Evolution model (GCE).
+### Welcome to the analytical galactic chemical evolution model with terminal wind sampler!
+How are Mg, Si, Ca, Ti, or so-called __&alpha;-elements__, evolved in dwarf galaxies? In this repository you will find the answer from a simple implementation of what is called one-zone Galactic Chemical Evolution model (GCE).
 
-Despite many of analytical GCE exist since 1960s, here we introduce the unique solution: it combines gas inflow and the forced gas outflow from the stellar system. 
+Despite many of analytical GCEs exist since 1960s, here we introduce the unique solution: it combines gas inflow and forced gas outflow from a stellar system. 
 
 The new model is called __Inflow with Ram Pressure Stripping (IRPS)__.
 
@@ -19,22 +19,22 @@ Similarly, let's introduce  [&alpha;/H] for the sum of Mg, Si, Ca and Ti, and al
 Z = Z_{Sun, \alpha} \cdot 10^{[\alpha/H]}
 ```
 #### Mass conservation
-What are the processes and properties which affect the elemental evolution in the galactic scope? First, it is gas _g_ and stars _s_ total mass conservation:
+What are processes and properties which affect the elemental evolution in the galactic scope? First, it is gas _g_ and stars _s_ total mass conservation:
 
 ```math
 \frac{dg}{dt}=F-E-\frac{ds}{dt}
 ```
 
-where _F_, _E_ - gas inflow and gas outlflow in the system. Dark matter is omitted in the chemical evolution and equations as well.
+where _F_, _E_ - gas inflow and gas outlflow in the system. Dark matter is omitted in the chemical evolution and equations.
 
 #### Star formation and galactic gas loss
-The heaviest stars live the shortest lives: their core-collapse deaths are responsible for &alpha;-elements main contribution. Taking into account elements produced from only this process allows to use so called _instantaneous recycling approximation_.
-From this, as we need to make a guess about the term ds/dt (s = &lambda; S, for still existing stars only; S - total mass of ever born stars), which we recall here from star formation history, &psi; ~ g, from Kennicutt-Schmidt law (1953):
+The heaviest stars live the shortest lives: their core-collapse deaths are responsible for &alpha;-elements main contribution. Taking into account elements produced from only this process allows to use so-called _instantaneous recycling approximation_.
+From this, as we need to make a guess about the term ds/dt (s = &lambda; S, for still existing stars only; S - total mass of ever born stars), which we recall here from star formation history &psi; from Kennicutt-Schmidt law (1953) (&psi; ~ g):
 
 ```math
 \frac{ds}{dt}=(1-R) \psi =\lambda \psi =\beta g
 ```
-where &lambda; - locked-in-stars mass, _R_ - fraction of already dead stars, &beta; - star formation efficiency (efficiency of how effectively gas can be transformed into stars). As star formation includes birth of massive stars too, the gas outflow from the system should be proportional with mass-loading factor &eta; to star formation as well:
+where &lambda; - locked-in-stars mass, _R_ - fraction of already dead stars, &beta; - star formation efficiency (efficiency of how effectively gas can be transformed into stars). As star formation includes birth of massive stars too, the gas outflow from the system should be proportional with a mass-loading factor &eta; to star formation as well:
 
 ```math
 E = \eta \beta g + E'_s
@@ -48,7 +48,7 @@ Finally, for &alpha;-abundance injection/loss we have:
 ```math
 \frac{dgZ}{dt} = q \psi + RZ \psi - Z \psi -Z_E E + Z_F F
 ```
-where q - the yield of elements in question from stellar deaths, Z<sub>E</sub>, Z<sub>F</sub> - loss and contribution of &alpha;-elements from the systemic gas loss and inflow respectively. Let's also introduce effective yield:
+where q - yield of elements in question, Z<sub>E</sub>, Z<sub>F</sub> - loss and contribution of &alpha;-elements from the systemic gas loss and inflow respectively. Let's also introduce the _effective yield_:
 
 ```math
 p_{eff} = \frac{p}{1+\eta} = \frac{q}{\lambda(1+\eta)}
@@ -56,24 +56,22 @@ p_{eff} = \frac{p}{1+\eta} = \frac{q}{\lambda(1+\eta)}
 
 ### What this repository is about?
 
-This repository contains the Jupyter-Notebook, which allows the user to build the solution of the analytical solution of the above equations:
+This repository contains the Jupyter Notebook which allows the user to build the analytical solution of the above equations:
 
 ```math
-\frac{ds}{dZ} = f(Z);
+\frac{ds}{dZ} = f(Z)
 ```
 ```math
-Z = Z_1(g)~~~~([\alpha/H]<[\alpha/H]_s);
+Z = Z_1(g)~~~~([\alpha/H]<[\alpha/H]_s)
 ```
 ```math
 Z = Z_2(g)~~~~([\alpha/H]>[\alpha/H]_s)
 ```
-where the first function (&alpha;-elements distribution fucntion (ADF) among the observed stars in the small galaxy) takes into account the gas, which must be found from the equations below. There are two equations _Z=Z(g)_, before and after [&alpha;/H]<sub>s</sub> (the ram pressure stripping occured). 
+where the first function (&alpha;-elements distribution function (ADF) among the observed stars in the small galaxy) takes into account gas which must be found from the equations below. There are two equations _Z=Z(g)_, before and after [&alpha;/H]<sub>s</sub> (the ram pressure stripping occured). 
 
-All functions are implemented in the repository, but they are way too long.
+### What it contains?
 
-### What it contains and how to use it?
-
-After you upload the Jupyter-Notebook, in your access will be functions with next arguments:
+After you upload the Jupyter Notebook, in your access will be functions with next arguments:
 
 | Function         | Input                                                                                        | Output                                                       |
 |------------------|----------------------------------------------------------------------------------------------|--------------------------------------------------------------|
@@ -104,7 +102,7 @@ After you upload the Jupyter-Notebook, in your access will be functions with nex
 |                  | z<sub>initial</sub> = Z<sub>0</sub>/p<sub>eff</sub>                                          |                                                              |
 |                  | g - gas, an array                                                                            |                                                              |
 |                  | g_in - initial fraction of gas mass from the stellar system, in initial mass units it's 1    |                                                              |
-| gas_equation     | p<sub>eff</sub> - the effective yield,                                                       | Compiles _eq_after_g_abs_                                    |
+| gas_equation     | p<sub>eff</sub> - the effective yield,                                                       | Combines _eq_after_g_abs_                                    |
 |                  | F - inflow in &xi;                                                                           | and _eq_before_g_abs_                                        |
 |                  | Es - outflow in &zeta;                                                                       | and returns gas values                                       |
 |                  |  aH<sub>inflow</sub> = [&alpha;/H]<sub>F</sub>                                               | for designated array of                                      |
@@ -118,17 +116,17 @@ After you upload the Jupyter-Notebook, in your access will be functions with nex
 |                  | F - inflow in &xi;                                                                           | for specified parameters:                                    |
 |                  | E - outflow in &zeta;                                                                        | p<sub>eff</sub>, &zeta;/&xi;                                 |
 |                  | alphah - array of equally spaced [&alpha;/H] points,                                         | (with &xi; fixed as                                          |
-|                  | gas - gas, an array of points predetermined for [&alpha;/H] array in aH array,               | 10 before and 0.01 after intense gas loss                    |
+|                  | gas - gas, an array of points predetermined for [&alpha;/H] array in aH array,               | 10 before and 0.01 after intense gas loss has started)                    |
 |                  | aH<sub>str</sub>=[&alpha;/H]<sub>s</sub>                                                     |    [&alpha;/H]<sub>F</sub>                                   |
-|                  | show=False - whether to show or not to show supplemental g(&alpha;/H) and other plots        |  and array of [&alpha;/H]                                    |
+|                  | show=False - whether to show or not to show supplemental g([&alpha;/H]) and other plots      |  and the array of [&alpha;/H]                                    |
 |                                                                                                                                                                                |
 
-The function _a2_ takes as input three main parameters: the structure of the equations is so, that &xi; can be a normalization factor. The gas values for each &alpha;-abundance array is predetermined in function _gas_equation_, which combines equations before ram pressure stripping occurs and after. 
+The function _a2_ takes as input three model parameters only, because the structure of the equations allows to consider &xi; as a normalization factor. The gas values for each &alpha;-abundance array is predetermined in function _gas_equation_, which combines equations before ram pressure stripping occurs and after. 
 
 ### How to use it?
 
-The rest of Jupyter-Notebook is referred to some proposed examples on how to use the functions. 
-In prospective, the &alpha;-distribution function can be compared to the observed histogram of &alpha;-abundances of stars from some given galaxy to find the best-fitting parameters: effective yield, &zeta;/&xi;, inflow metallicity. 
+The rest of the notebook is referred to some proposed examples on how the equations perform. 
+In prospective, the &alpha;-distribution function can be compared to the observed histogram of &alpha;-abundances of stars from some given galaxy to find the best-fitting parameters: effective yield, &zeta;/&xi;, ram pressure stripping metallicity. 
 
 For questions, contact kkvasova@nd.edu.
 
