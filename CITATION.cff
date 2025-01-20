@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Kvasova"
+  given-names: "Kateryna"
+  orcid: "https://orcid.org/0000-0002-7438-1059"
+- family-names: "Kirby"
+  given-names: "Evan"
+  orcid: "https://orcid.org/0000-0001-6196-5162"
+title: "irps_model"
+version: 1.0.4
+doi: 10.5281/zenodo.14690724
+date-released: 2025-01-19
+url: "https://github.com/kkvasova/irps_model"
